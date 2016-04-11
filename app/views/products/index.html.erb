@@ -3,7 +3,7 @@
 <div class="container text-center">
   <ul>
     <% @products.each do |product|  %>
-      <li>  <%= product %> </li>
+      <li>  <%= product[:name] %>  <%= product[:category] %>  </li>
     <% end %>
   </ul>
 </div>
