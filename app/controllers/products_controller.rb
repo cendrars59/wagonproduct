@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = PRODUCTS[params[:id]]
+    @product = PRODUCTS[params[:id].to_i]
   end
 
 end
