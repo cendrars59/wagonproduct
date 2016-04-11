@@ -7,16 +7,13 @@ Rails.application.routes.draw do
 
   # Routes related to products
   get "/products" => "products#index"
-
+  get "/products/:id" => "products#show"
 
 
   # Routes related to users
   get "/users" => "users#index"
 
 
-
-
-  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
