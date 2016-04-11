@@ -14,7 +14,10 @@ class ProductsController < ApplicationController
     else
       @products = PRODUCTS
     end
+  end
 
+  def show
+    @product = PRODUCTS[params[:id]]
   end
 
 end
