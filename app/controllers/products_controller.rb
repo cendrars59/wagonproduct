@@ -10,9 +10,9 @@ class ProductsController < ApplicationController
 
   def index
     if params[:filter]
-      @products= PRODUCTS.select {|product| product[:category] = params[:filter]  }
+      @products= PRODUCTS.select {|product| product[:category] == params[:filter]}
     else
-      @@products = PRODUCTS
+      @products = PRODUCTS
     end
 
   end
