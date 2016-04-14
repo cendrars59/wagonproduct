@@ -1,0 +1,2 @@
+class Telex < ApplicationRecord
+end

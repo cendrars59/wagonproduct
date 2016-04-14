@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get "/users" => "users#index"
 
 
+  # Routes telex
+  get "/telex" => "telex#index"
+  get "/telex/:id" => "telex#show"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

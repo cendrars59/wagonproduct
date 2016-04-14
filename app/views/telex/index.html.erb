@@ -1,0 +1,9 @@
+<h1>Telex</h1>
+
+<div class="container text-center">
+  <ul>
+    <% @telexes.each do |telex|  %>
+      <li>  <%= telex.title %>  <%= telex.descripton %>  </li>
+    <% end %>
+  </ul>
+</div>
