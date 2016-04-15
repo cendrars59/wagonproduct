@@ -11,22 +11,16 @@ Rails.application.routes.draw do
 
 
   # Routes related to users management
-            get   "users" => "users#index"
-            get   "users/:id" => "users#show"
-            get   "users/new" => "users#new"
-            post  "users" => "users#create"
-            get   "users/:id/edit" => "users#edit"
-            patch "users/:id" => "users#update"
-            delete   "users/:id" => "users#destroy"
+  resources :users
 
   # Routes related to the telex mangement
-            get   "telex" => "telex#index"
-            get   "telex/:id" => "telex#show"
-            get   "telex/new" => "telex#new"
-            post  "telex" => "telex#create"
-            get   "telex/:id/edit" => "telex#edit"
-            patch "telex/:id" => "telex#update"
-            delete  "telex/:id" => "telex#destroy"
+  get   "telex" => "telex#index"
+  get   "telex/:id" => "telex#show"
+  get   "telex/new" => "telex#new"
+  post  "telex" => "telex#create"
+  get   "telex/:id/edit" => "telex#edit"
+  patch "telex/:id" => "telex#update"
+  delete  "telex/:id" => "telex#destroy"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
