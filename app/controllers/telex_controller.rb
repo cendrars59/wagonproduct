@@ -9,7 +9,7 @@ class TelexController < ApplicationController
   end
 
   def new
-
+    puts "hello"
   end
 
   def create

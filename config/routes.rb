@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
-  get "team" => "pages#team"
-  get "contact" => "pages#join_us"
+  get "/team" => "pages#team"
+  get "/contact" => "pages#join_us"
 
 
   # Routes related to products
@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   resources :users
 
   # Routes related to the telex mangement
-  get   "telex" => "telex#index"
-  get   "telex/:id" => "telex#show"
-  get   "telex/new" => "telex#new"
-  post  "telex" => "telex#create"
-  get   "telex/:id/edit" => "telex#edit"
-  patch "telex/:id" => "telex#update"
-  delete  "telex/:id" => "telex#destroy"
+  get   "/telex" => "telex#index"
+  get   "/telex/:id" => "telex#show"
+  get   "/telex/new" => "telex#new"
+  post  "/telex" => "telex#create"
+  get   "/telex/:id/edit" => "telex#edit"
+  patch "/telex/:id" => "telex#update"
+  delete  "/telex/:id" => "telex#destroy"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
