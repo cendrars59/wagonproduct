@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1>Create your telex </h1>
+      <%= simple_form_for @country do |c| %>
+        <%= c.input :code %>
+        <%= c.input :title %>
+        <%= c.input :description %>
+        <%= c.input :end_validity %>
+        <%= c.input :active %>
+        <%= c.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

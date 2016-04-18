@@ -8,7 +8,7 @@ class CountriesController < ApplicationController
   end
 
   def new
-
+    @country = Country.new 
   end
 
   def create
