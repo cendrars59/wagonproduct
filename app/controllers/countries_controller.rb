@@ -8,11 +8,13 @@ class CountriesController < ApplicationController
   end
 
   def new
-    @country = Country.new 
+    @country = Country.new
   end
 
   def create
-
+    @product = Country.new(country_params)
+    @product.save
+    redirect_to countries_path
   end
 
   def edit
@@ -25,6 +27,14 @@ class CountriesController < ApplicationController
 
   def destroy
 
+  end
+
+
+  private
+
+  # Avoid paramters hacking
+  def country_params
+    params.require(:country).permit(:code, :label, :active)
   end
 
 end

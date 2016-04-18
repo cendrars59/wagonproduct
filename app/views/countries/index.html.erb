@@ -1,9 +1,19 @@
 <h1>Countries</h1>
 
 <div class="container text-center">
-  <ul>
+  <table class="table-bordered table-striped">
+    <tr>
+      <th>Code</th>
+      <th>Label</th>
+      <th>Active</th>
+    </tr>
     <% @countries.each do |country|  %>
-      <li>  <%= country %> </li>
+      <tr>
+        <td><%= country.code %></td>
+        <td><%= country.label %></td>
+        <td><%= country.active %></td>
+      </tr>
     <% end %>
-  </ul>
+  </table>
+
 </div>
