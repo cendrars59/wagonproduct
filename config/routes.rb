@@ -13,31 +13,11 @@ Rails.application.routes.draw do
   # Routes related to users management
   resources :users
 
-
   # Routes related to the telex mangement
-  get     "/telex"          => "telex#index"
-  post    "/telex"          => "telex#create"
-  get     "/telex/new"      => "telex#new"
-  get     "/telex/:id/edit" => "telex#edit"
-  get     "/telex/:id"      => "telex#show"
-  patch   "/telex/:id"      => "telex#update"
-  put     "/telex/:id"      => "telex#update"
-  delete  "/telex/:id"      => "telex#destroy"
+  resources :telex
 
   # Routes related to the countries mangement
-  get     "/countries"          => "countries#index"
-  post    "/countries"          => "countries#create"
-  get     "/countries/new"      => "countries#new"
-  get     "/countries/:id/edit" => "countries#edit"
-  get     "/countries/:id"      => "countries#show"
-  patch   "/countries/:id"      => "countries#update"
-  put     "/countries/:id"       => "countriesupdate"
-  delete  "/countries/:id"       => "countries#destroy"
-
-
-
-
-
+  resources :countries
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

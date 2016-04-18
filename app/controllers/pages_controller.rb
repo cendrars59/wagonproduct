@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    
+    #@telexes = Telex.all
   end
 
   def join_us

@@ -3,7 +3,10 @@
 <div class="container text-center">
   <ul>
     <% @telexes.each do |telex|  %>
-      <li>  <%= telex.title %>  <%= telex.description %>  </li>
+      <li>
+          <%= telex.title %>  <%= telex.description %> <%= link_to "details",telex_path(telex) %>
+      </li>
+
     <% end %>
   </ul>
 </div>
