@@ -12,9 +12,12 @@ class CountriesController < ApplicationController
   end
 
   def create
-    @product = Country.new(country_params)
-    @product.save
-    redirect_to countries_path
+    @country = Country.new(country_params)
+    if @country.save
+      redirect_to countries_path
+    else
+      render :new
+    end
   end
 
   def edit

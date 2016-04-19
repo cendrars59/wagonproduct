@@ -1,2 +1,0 @@
-class Telex < ApplicationRecord
-end

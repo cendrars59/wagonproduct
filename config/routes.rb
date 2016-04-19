@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users
 
   # Routes related to the telex mangement
-  resources :telex
+  resources :posts
 
   # Routes related to the countries mangement
   resources :countries

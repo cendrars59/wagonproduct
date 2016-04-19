@@ -6,12 +6,14 @@
       <th>Code</th>
       <th>Label</th>
       <th>Active</th>
+      <th>Details</th>
     </tr>
     <% @countries.each do |country|  %>
       <tr>
         <td><%= country.code %></td>
         <td><%= country.label %></td>
         <td><%= country.active %></td>
+        <td><%= link_to "details",country_path(country) %></td>
       </tr>
     <% end %>
   </table>
