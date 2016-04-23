@@ -19,6 +19,13 @@ Rails.application.routes.draw do
   # Routes related to the countries mangement
   resources :countries
 
+  # Routes related to the countries mangement
+  resources :groups
+
+  # Routes related to the countries mangement
+  resources :profils
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
