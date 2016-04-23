@@ -1,9 +1,10 @@
-class Country < ApplicationRecord
+class Category < ApplicationRecord
 
   #############################################################################
   # Data  model relationships
   #############################################################################
-  has_many :categories
+  belongs_to :country
+
 
 
 
@@ -18,5 +19,6 @@ class Country < ApplicationRecord
   validates :label,
             presence:true,
             length: {maximum: 50}
+
 
 end
