@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
 
   # Routes related to users management
-  resources :users
+  resources :categories
 
   # Routes related to the telex mangement
   resources :posts

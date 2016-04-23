@@ -13,8 +13,7 @@ class Category < ApplicationRecord
   #############################################################################
   validates :code,
             presence:true,
-            uniqueness: true,
-            length: 3
+            uniqueness: true
 
   validates :label,
             presence:true,

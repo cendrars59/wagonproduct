@@ -6,17 +6,15 @@ class Country < ApplicationRecord
   has_many :categories
 
 
-
   #############################################################################
   # Controls on set data`
   #############################################################################
   validates :code,
-            presence:true,
-            uniqueness: true,
-            length: 3
+            presence: true,
+            uniqueness: true
 
   validates :label,
-            presence:true,
+            presence: true,
             length: {maximum: 50}
 
 end

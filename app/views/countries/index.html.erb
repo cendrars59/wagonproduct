@@ -1,21 +1,21 @@
-<h1>Countries</h1>
-
-<div class="container text-center">
-  <table class="table-bordered table-striped">
-    <tr>
-      <th>Code</th>
-      <th>Label</th>
-      <th>Active</th>
-      <th>Details</th>
-    </tr>
-    <% @countries.each do |country|  %>
+<div class="work-area">
+  <h2>Countries</h2>
+  <div class="text-center">
+    <table class="table-bordered table-striped">
       <tr>
-        <td><%= country.code %></td>
-        <td><%= country.label %></td>
-        <td><%= country.active %></td>
-        <td><%= link_to "details",country_path(country) %></td>
+        <th>Code</th>
+        <th>Label</th>
+        <th>Active</th>
+        <th>Details</th>
       </tr>
-    <% end %>
-  </table>
-
+      <% @countries.each do |country|  %>
+        <tr>
+          <td><%= country.code %></td>
+          <td><%= country.label %></td>
+          <td><%= check_box_tag :is_active %></td>
+          <td><%= link_to "details",country_path(country) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
