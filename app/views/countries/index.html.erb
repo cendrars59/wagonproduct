@@ -1,21 +1,42 @@
 <div class="work-area">
   <h2>Countries</h2>
-  <div class="text-center">
-    <table class="table-bordered table-striped">
-      <tr>
-        <th>Code</th>
-        <th>Label</th>
-        <th>Active</th>
-        <th>Details</th>
-      </tr>
-      <% @countries.each do |country|  %>
-        <tr>
-          <td><%= country.code %></td>
-          <td><%= country.label %></td>
-          <td><%= check_box_tag :is_active %></td>
-          <td><%= link_to "details",country_path(country) %></td>
-        </tr>
-      <% end %>
-    </table>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div>
+          <table class="table-bordered table-hover">
+            <tr>
+              <th>Code</th>
+              <th>Label</th>
+              <th>Active</th>
+              <th></th>
+            </tr>
+            <% @countries.each do |country|  %>
+              <tr>
+                <td><%= country.code %></td>
+                <td><%= country.label %></td>
+                <td class="text-center"><%= check_box_tag :is_active %></td>
+                <td>
+                  <%= link_to country_path(country) do %>
+                    <i class="fa fa-eye"></i>
+                  <% end %>
+                  <%= link_to edit_country_path(country) do %>
+                    <i class="fa fa-pencil"></i>
+                  <% end %>
+                  <%= link_to country_path(country), method: :delete do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+          <div class="button-area">
+            <%= link_to new_country_path do %>
+              <button type="button" name="New Country" class="btn btn-primary">New country</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -19,5 +19,12 @@ class Category < ApplicationRecord
             presence:true,
             length: {maximum: 50}
 
+  #############################################################################
+  # Scope on set data`
+  #############################################################################
+  scope :active, -> {
+    where(:active => true)
+  }
+
 
 end

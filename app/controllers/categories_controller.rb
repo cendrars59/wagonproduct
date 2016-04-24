@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
 
   before_action :find_category, only: [:show, :edit, :update, :destroy]
+  before_action :gather_country, only: [:new, :edit]
 
   def index
     @categories = Category.all
@@ -46,8 +47,12 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:code, :label, :active)
   end
 
-  def find_country
+  def find_category
     @category = Category.find(params[:id])
+  end
+
+  def gather_country
+    @selectable_countries = Country.active
   end
 
 end

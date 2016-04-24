@@ -1,7 +1,7 @@
-<%= simple_form_for @country do |c| %>
+<%= simple_form_for @category do |c| %>
   <%= c.input :code %>
   <%= c.input :label %>
+  <%= c.input :country, collections: @selectable_countries.label, prompt: "Country" %>
   <%= c.input :active %>
   <%= c.button :submit, "Add", class: "btn btn-primary" %>
-  <%= c.button :button,class: "btn btn-warning" %>
 <% end %>
