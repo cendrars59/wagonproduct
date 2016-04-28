@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
 
+
+  # Route to manage Attachinary
+  mount Attachinary::Engine => "/attachinary"
+
+  # Routes related to the users
+  devise_for :users
+  resources :users, only: [:index]
+
+  root to: 'pages#home'
   get "/team" => "pages#team"
   get "/contact" => "pages#join_us"
 

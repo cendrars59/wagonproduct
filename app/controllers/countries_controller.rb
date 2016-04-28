@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
 
+  # Retrieveing country according the ID
   before_action :find_country, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -43,7 +44,7 @@ class CountriesController < ApplicationController
 
   # Avoid paramters hacking
   def country_params
-    params.require(:country).permit(:code, :label, :active)
+    params.require(:country).permit(:code, :label, :active, :photo)
   end
 
   def find_country

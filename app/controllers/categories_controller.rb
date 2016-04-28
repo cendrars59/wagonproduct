@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
 
   before_action :find_category, only: [:show, :edit, :update, :destroy]
+
+  # Gathering active countries to attach to category to create or update
   before_action :gather_country, only: [:new, :edit]
 
   def index
@@ -44,7 +46,7 @@ class CategoriesController < ApplicationController
 
   # Avoid paramters hacking
   def category_params
-    params.require(:category).permit(:code, :label, :active)
+    params.require(:category).permit(:code, :label, :active, :country_id,:photo)
   end
 
   def find_category

@@ -3,8 +3,11 @@ class Country < ApplicationRecord
   #############################################################################
   # Data  model relationships
   #############################################################################
-  has_many :categories
 
+  # Allowing the attachement of a photo to a category
+  has_attachment :photo
+
+  has_many :categories
 
   #############################################################################
   # Controls on set data`
@@ -20,6 +23,8 @@ class Country < ApplicationRecord
   #############################################################################
   # Scope on set data`
   #############################################################################
+
+    # Scope on the active countries
   scope :active, -> {
     where(:active => true)
   }

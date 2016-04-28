@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+
+  # Gathering active categories to attach to category to create or update
+  before_action :gather_category, only: [:new, :edit]
+
+
   def index
     @posts= Post.all
   end
@@ -38,6 +45,14 @@ class PostsController < ApplicationController
   # Avoid paramters hacking
   def post_params
     #params.require(:post).permit(xxxxxxxxxx)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
+  def gather_category
+    @selectable_categories = Category.active
   end
 
 

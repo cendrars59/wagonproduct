@@ -4,6 +4,9 @@
 
   </div>
   <div class="small-form-area">
+    <% if @country.photo? %>
+      <%= cl_image_tag @country.photo.path %>
+    <% end %>
     <%= simple_form_for @country do |c| %>
       <%= c.input :code %>
       <%= c.input :label %>

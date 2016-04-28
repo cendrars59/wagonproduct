@@ -1,15 +1,11 @@
 class PagesController < ApplicationController
 
+  # Alllowing to display pages even the user is not authenticated
+  skip_before_action :authenticate_user!
+
   def home
-    #@telexes = Telex.all
+    
   end
 
-  def join_us
-
-  end
-
-  def team
-
-  end
 
 end

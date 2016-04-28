@@ -1,7 +1,7 @@
 <%= simple_form_for @category do |c| %>
   <%= c.input :code %>
   <%= c.input :label %>
-  <%= c.input :country, collections: @selectable_countries.label, prompt: "Country" %>
-  <%= c.input :active %>
-  <%= c.button :submit, "Add", class: "btn btn-primary" %>
+  <%= c.input :country_id,collection: @selectable_countries, prompt: "Select a country" %>
+  <%= c.input :is_active, as: :boolean, checked_value: true, unchecked_value: false%>
+  <%= c.button :submit, "Validate", class: "btn validate" %>
 <% end %>
