@@ -3,14 +3,12 @@ class Category < ApplicationRecord
   #############################################################################
   # Data  model relationships
   #############################################################################
+
   # Allowing the attachement of a photo to a category
   has_attachment :photo
 
-  
   belongs_to :country
-
-
-
+  has_many :users
 
   #############################################################################
   # Controls on set data`

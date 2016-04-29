@@ -3,5 +3,6 @@
   <%= c.input :label %>
   <%= c.input :country_id,collection: @selectable_countries, prompt: "Select a country" %>
   <%= c.input :is_active, as: :boolean, checked_value: true, unchecked_value: false%>
+  <%= c.input :photo, as: :attachinary %>
   <%= c.button :submit, "Validate", class: "btn validate" %>
 <% end %>
