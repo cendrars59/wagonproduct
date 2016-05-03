@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
+
+gem 'bundler', '>= 1.8.4'
 gem 'rails', '5.0.0.beta4'
 gem 'puma'
 gem 'pg'
@@ -12,6 +14,13 @@ gem 'cloudinary', '~> 1.1', '>= 1.1.6'
 gem "attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
+
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-leaflet'
+end
 
 
 gem 'sass-rails'

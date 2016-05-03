@@ -4,4 +4,7 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require bootstrap
+//= require angular
+//= require leaflet
 //= require_tree .
