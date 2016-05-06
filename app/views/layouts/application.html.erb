@@ -9,7 +9,9 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
+    <!-- To display the Nav Bar  -->
     <%= render "shared/navbar" %>
+    <!-- To display messages when logging in  -->
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>

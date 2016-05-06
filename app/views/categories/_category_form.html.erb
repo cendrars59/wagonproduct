@@ -1,7 +1,7 @@
 <%= simple_form_for @category do |c| %>
   <%= c.input :code %>
   <%= c.input :label %>
-  <%= c.input :country_id,collection: @selectable_countries, prompt: "Select a country" %>
+  <%= c.association :country, collection: @selectable_countries, :label_method => lambda { |country| "#{country.label}" } %>
   <%= c.input :is_active, as: :boolean, checked_value: true, unchecked_value: false%>
   <%= c.input :photo, as: :attachinary %>
   <%= c.button :submit, "Validate", class: "btn validate" %>
