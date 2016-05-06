@@ -46,7 +46,7 @@ class CategoriesController < ApplicationController
 
   # Avoid paramters hacking
   def category_params
-    params.require(:category).permit(:code, :label, :active, :country_id,:photo)
+    params.require(:category).permit(:code, :label, :is_active, :description ,:country_id,:photo)
   end
 
   def find_category

@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <div class="search-area">
-          
+
         </div>
         <% @categories.each do |category|  %>
           <div class="product">
@@ -18,12 +18,18 @@
               <h3> <%= category.label %> </h3>
               <div>Code: <%= category.code %></div>
               <div>Country: <%= category.country.label %></div>
-              <div>Active: <%= category.is_active %> </div>
+              <div>Active: <%=  %>
+                <% if category.is_active == true%>
+                    <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
+                <% else %>
+
+                <% end %>
+              </div>
             </div>
             <ul class="list-inline product-controls hidden-sm hidden-xs">
               <li>
                 <%= link_to edit_category_path(category) do %>
-                  <i class="fa fa-pencil"> </i>
+                  <i class="fa fa-pencil "> </i>
                 <% end %>
               </li>
               <li>

@@ -2,7 +2,8 @@
   <%= c.input :code %>
   <%= c.input :label %>
   <%= c.association :country, collection: @selectable_countries, :label_method => lambda { |country| "#{country.label}" } %>
-  <%= c.input :is_active, as: :boolean, checked_value: true, unchecked_value: false%>
+  <%= c.input :is_active %>
+  <%= c.input :description, as: :text %>
   <%= c.input :photo, as: :attachinary %>
   <%= c.button :submit, "Validate", class: "btn validate" %>
 <% end %>
