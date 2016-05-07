@@ -6,6 +6,8 @@ class Country < ApplicationRecord
 
   # Allowing the attachement of a photo to a category
   has_attachment :photo
+
+  # Relathionship with a master country
   belongs_to :country
   has_many :countries
 
@@ -31,4 +33,7 @@ class Country < ApplicationRecord
     where(:active => true)
   }
 
+  scope :master, -> {
+    where("active = ? and master = ?", true,true )
+  }
 end

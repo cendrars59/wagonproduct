@@ -1,8 +1,20 @@
+<!--Requirement:Req-Country-001 -->
+<!--Title: Edit or Create a new country screen  -->
+<!--Description:  -->
+<!-- -->
+
 <%= simple_form_for @country do |c| %>
-  <%= c.input :code %>
-  <%= c.input :label %>
-  <%= c.input :active %>
-  <%= c.input :description, as: :text %>
+  <%= c.input :code, input_html: { maxlength: 6 } ,:readonly => true%>
+  <% if (@country.master == false) %>
+    <%= c.input :label, input_html: { maxlength: 40 } %>
+    <%= c.input :active %>
+    <%= c.association :country, label:'Master',collection: @master,:readonly => true, :label_method => lambda { |country| "#{country.label}" },include_blank: false %>
+  <% else %>
+    <%= c.input :label, input_html: { maxlength: 40 },:readonly => true%>
+    <%= c.input :active, :disabled => true  %>
+    <%= c.input :master, label: "Is master", :disabled => true%>
+  <% end %>
+  <%= c.input :description, as: :text ,input_html: { maxlength: 255 } %>
   <%= c.input :photo, as: :attachinary %>
-  <%= c.button :submit, "Add", class: "btn validate" %>
+  <%= c.button :submit, "Validate", class: "btn validate" %>
 <% end %>

@@ -2,7 +2,7 @@ class CountriesController < ApplicationController
 
   # Retrieveing country according the ID
   before_action :find_country, only: [:show, :edit, :update, :destroy]
-
+  before_action :find_master, only: [:show, :new,:edit, :update, :destroy]
   def index
     @countries= Country.all
   end
@@ -53,6 +53,10 @@ class CountriesController < ApplicationController
 
   def find_countries
     @countries = Country.all.find(params[:id])
+  end
+
+  def find_master
+    @master = Country.master
   end
 
 end
