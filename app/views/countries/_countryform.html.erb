@@ -1,7 +1,21 @@
 <!--Requirement:Req-Country-001 -->
 <!--Title: Edit or Create a new country screen  -->
-<!--Description:  -->
-<!-- -->
+<!--Description:
+code field is in read only sting limited at 6 caracters
+label string limited at 40 caracters
+Active : check box
+Description field is free text zone limited at 255 caracteres
+Photo : is possible to add logo
+- If the country is tagged as master :
+      Label string limited at 40 caracters and in read only mode
+      Active check box is disabled
+      Master check box is displayed and is disabeled
+- If the country is NOT tagged as master :
+      Label string limited at 40 caracters and in read only mode
+      Active check box is enabled
+      Master check box is not displayed and the master country is displayed.
+      It is not possible to change the value     -->
+
 
 <%= simple_form_for @country do |c| %>
   <%= c.input :code, input_html: { maxlength: 6 } ,:readonly => true%>

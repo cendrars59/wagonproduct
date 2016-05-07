@@ -3,38 +3,59 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-
-          <% @countries.each do |country|  %>
-
-          <div class="product">
-            <% if country.photo? %>
-              <!-- Decalre the link to retrieve the photo -->
-              <%= cl_image_tag(country.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image' ) %>
-            <% else %>
-              <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs">
+          <div class="search-width">
+            <form class="form-inline">
+              <div class="form-group form-group-lg" class="spacing-search">
+                <label for="countryCode" class="space-between-label-input">Code</label>
+                <input type="text" class="form-control" id="countryCode" placeholder="EUR" maxlength="6" size="6">
+              </div>
+              <div class="form-group form-group-lg"class="spacing-search">
+                <label for="countryLabel" class="space-between-label-input">Label</label>
+                <input type="text" class="form-control" id="countryLabel" placeholder="Europe" maxlength="40" size="40" disabled>
+              </div>
+              <div class="form-group form-group-lg"class="spacing-search">
+                <label for="countryActive" class="space-between-label-input">Active</label>
+                <input type="checkbox" class="form-control" id="countryActive">
+              </div>
+              <button type="submit" class="btn btn-primary spacing-search">Search</button>
+              <%= link_to new_country_path do %>
+                <button type="button" name="New" class="btn action spacing-search">New</button>
+              <% end %>
+            </form>
+          </div>
+          <% if @countries.length != 0 %>
+            <% @countries.each do |country|  %>
+              <div class="product">
+                <% if country.photo? %>
+                  <!-- Decalre the link to retrieve the photo -->
+                  <%= cl_image_tag(country.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image' ) %>
+                <% else %>
+                  <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs">
+                <% end %>
+                <div class='product-body'>
+                  <h3> <%= country.code %>  </h3>
+                  <h3> <%= country.label %> </h3>
+                </div>
+                <ul class="list-inline product-controls hidden-sm hidden-xs">
+                  <li>
+                    <%= link_to edit_country_path(country) do %>
+                      <i class="fa fa-pencil"> </i>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to country_path(country), method: :delete do %>
+                      <i class="fa fa-trash"> </i>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
             <% end %>
-            <div class='product-body'>
-              <h3> <%= country.code %>  </h3>
-              <h3> <%= country.label %> </h3>
-            </div>
-            <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li>
-                <%= link_to edit_country_path(country) do %>
-                  <i class="fa fa-pencil"> </i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to country_path(country), method: :delete do %>
-                  <i class="fa fa-trash"> </i>
-                <% end %>
-              </li>
-            </ul>
-            </div>
+          <!--Message is displayed if the list is empty -->
+          <% else %>
+            <span class="empty-list-message message-centered">Country list is empty. No country available</span>
           <% end %>
           <div class="button-area">
-            <%= link_to new_country_path do %>
-              <button type="button" name="New" class="btn action">New</button>
-            <% end %>
+
           </div>
         </div>
       </div>
