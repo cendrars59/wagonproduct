@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506220621) do
+ActiveRecord::Schema.define(version: 20160507083035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +48,14 @@ ActiveRecord::Schema.define(version: 20160506220621) do
     t.string   "code"
     t.string   "label"
     t.boolean  "active"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "description"
+    t.integer  "country_id"
+    t.boolean  "master",      default: false
   end
+
+  add_index "countries", ["country_id"], name: "index_countries_on_country_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "code"
@@ -108,4 +112,5 @@ ActiveRecord::Schema.define(version: 20160506220621) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "categories", "countries"
+  add_foreign_key "countries", "countries"
 end

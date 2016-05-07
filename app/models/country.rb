@@ -6,6 +6,8 @@ class Country < ApplicationRecord
 
   # Allowing the attachement of a photo to a category
   has_attachment :photo
+  belongs_to :country
+  has_many :countries
 
   has_many :categories
 
