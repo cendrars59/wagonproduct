@@ -18,7 +18,7 @@ Photo : is possible to add logo
 
 
 <%= simple_form_for @country do |c| %>
-  <%= c.input :code, input_html: { maxlength: 6 } ,:readonly => true%>
+  <%= c.input :code, input_html: { maxlength: 3 }%>
   <% if (@country.master == false) %>
     <%= c.input :label, input_html: { maxlength: 40 } %>
     <%= c.input :active %>

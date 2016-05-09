@@ -1,0 +1,42 @@
+<% if @countries.length != 0 %>
+  <% @countries.each do |country|  %>
+    <div class="product">
+      <% if country.photo? %>
+        <!-- Decalre the link to retrieve the photo -->
+        <%= cl_image_tag(country.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image' ) %>
+      <% else %>
+        <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs" data-toggle="tooltip" data-placement="left" title="country.description">
+      <% end %>
+      <div class='product-body'>
+        <h3> <%= country.code %> <%= country.label %> </h3>
+        <div>Active: <%=  %>
+          <% if country.active == true%>
+              <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
+          <% end %>
+        </div>
+        <div>Is master: <%=  %>
+          <% if country.master == true%>
+              <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+      <ul class="list-inline product-controls hidden-sm hidden-xs">
+        <li>
+          <%= link_to edit_country_path(country) do %>
+            <i class="fa fa-pencil"> </i>
+          <% end %>
+        </li>
+        <li>
+          <% if country.master == false %>
+            <%= link_to country_path(country), method: :delete do %>
+              <i class="fa fa-trash"> </i>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <!--Message is displayed if the list is empty -->
+  <span class="empty-list-message message-centered">Country list is empty. No country available</span>
+<% end %>

@@ -15,8 +15,7 @@
               <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs">
             <% end %>
             <div class='product-body'>
-              <h3> <%= category.label %> </h3>
-              <div>Code: <%= category.code %></div>
+              <h3> <%= category.code %> <%= category.label %> </h3>
               <div>Country: <%= category.country.label %></div>
               <div>Active: <%=  %>
                 <% if category.is_active == true%>

@@ -11,18 +11,37 @@ class Country < ApplicationRecord
   belongs_to :country
   has_many :countries
 
+  #categories must be related to a country
   has_many :categories
 
   #############################################################################
-  # Controls on set data`
+  # Controls before data`
+  #
   #############################################################################
   validates :code,
             presence: true,
-            uniqueness: true
+            uniqueness: true,
+            length: {maximum: 3}
 
   validates :label,
             presence: true,
-            length: {maximum: 50}
+            length: {maximum: 40}
+
+
+  validates_associated :countries
+
+  #############################################################################
+  # Method to retrieve the list of data according the search criteria
+  #############################################################################
+
+  def self.search(search)
+  if search
+    find(:all, :conditions => ['label LIKE ?', "%#{search}%"])
+  else
+    find(:all)
+  end
+
+
 
   #############################################################################
   # Scope on set data`
@@ -36,4 +55,13 @@ class Country < ApplicationRecord
   scope :master, -> {
     where("active = ? and master = ?", true,true )
   }
+
+  scope :notMasterAndActive, -> {
+    where("active = ? and master = ?", true,false)
+  }
+
+
+
+
+
 end
