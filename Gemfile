@@ -21,7 +21,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'autoprefixer-rails'
-gem 'chosen-rails'
+gem 'compass-rails'
+gem 'chosen-rails', '~> 1.4', '>= 1.4.3'
 
 
 group :development, :test do

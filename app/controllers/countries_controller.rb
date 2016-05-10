@@ -5,7 +5,7 @@ class CountriesController < ApplicationController
   before_action :find_master, only:[:show,:new,:create,:edit]
 
   def index
-    @countries = Country.search(params[:search])
+    @countries = Country.all
   end
 
   def show

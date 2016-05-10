@@ -4,5 +4,5 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-//= require chosen.jquery
+//= require chosen-jquery
 //= require_tree .

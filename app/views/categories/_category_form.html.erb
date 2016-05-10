@@ -1,7 +1,7 @@
 <%= simple_form_for @category do |c| %>
   <%= c.input :code %>
   <%= c.input :label %>
-  <%= c.association :country, collection: @selectable_countries, :label_method => lambda { |country| "#{country.label}" } %>
+  <%= c.association :country, collection: @selectable_countries.order(:label),:label_method => lambda { |country| "#{country.code} - #{country.label}"},input_html: { class: 'countries-select' } %>
   <%= c.input :is_active %>
   <%= c.input :description, as: :text %>
   <%= c.input :photo, as: :attachinary %>
