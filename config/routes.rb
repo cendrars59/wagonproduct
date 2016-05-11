@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   # Routes related to the countries mangement
   resources :profils
 
+  # Routes related to the retailers mangement
+  resources :retailers
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

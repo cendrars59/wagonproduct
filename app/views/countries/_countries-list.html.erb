@@ -3,7 +3,7 @@
     <div class="product">
       <% if country.photo? %>
         <!-- Decalre the link to retrieve the photo -->
-        <%= cl_image_tag(country.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image' ) %>
+        <%= cl_image_tag(country.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image') %>
       <% else %>
         <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs" data-toggle="tooltip" data-placement="left" title="country.description">
       <% end %>

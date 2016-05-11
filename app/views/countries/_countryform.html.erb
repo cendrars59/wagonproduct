@@ -1,28 +1,9 @@
-<!--Requirement:Req-Country-001 -->
-<!--Title: Edit or Create a new country screen  -->
-<!--Description:
-code field is in read only sting limited at 6 caracters
-label string limited at 40 caracters
-Active : check box
-Description field is free text zone limited at 255 caracteres
-Photo : is possible to add logo
-- If the country is tagged as master :
-      Label string limited at 40 caracters and in read only mode
-      Active check box is disabled
-      Master check box is displayed and is disabeled
-- If the country is NOT tagged as master :
-      Label string limited at 40 caracters and in read only mode
-      Active check box is enabled
-      Master check box is not displayed and the master country is displayed.
-      It is not possible to change the value     -->
-
-
 <%= simple_form_for @country do |c| %>
-  <%= c.input :code, input_html: { maxlength: 3 }%>
+  <%= c.input :code, input_html: {:maxlength => 6 }%>
   <% if (@country.master == false) %>
     <%= c.input :label, input_html: { maxlength: 40 } %>
     <%= c.input :active %>
-    <%= c.association :country, label:'Master',collection: @master,:readonly => true, :label_method => lambda { |country| "#{country.label}" },include_blank: false %>
+    <%= c.association :country, label:'Master',collection: @master,:readonly => true, :label_method => lambda { |country| "#{country.code} - #{country.label}" },include_blank: false,input_html: { class: 'countries-select' } %>
   <% else %>
     <%= c.input :label, input_html: { maxlength: 40 },:readonly => true%>
     <%= c.input :active, :disabled => true  %>

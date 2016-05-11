@@ -1,16 +1,10 @@
-class Country < ApplicationRecord
-
+class Retailer < ApplicationRecord
   #############################################################################
   # Data  model relationships
   #############################################################################
   has_attachment :photo
 
   belongs_to :country
-  has_many :countries
-
-
-  has_many :categories
-  has_many :retailers
 
   #############################################################################
   # Controls before data records`
@@ -26,7 +20,8 @@ class Country < ApplicationRecord
             length: {maximum: 40}
 
 
-  validates_associated :countries
+  validates :country_id,
+            presence:true
 
   #############################################################################
   # Scope on set data`
@@ -44,6 +39,5 @@ class Country < ApplicationRecord
   scope :notMasterAndActive, -> {
     where("active = ? and master = ?", true,false)
   }
-
 
 end

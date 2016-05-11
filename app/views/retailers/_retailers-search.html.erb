@@ -1,0 +1,13 @@
+<div class="search-width">
+  <%= form_tag retailers_path, class: "form-inline" do %>
+    <div class="form-group" class="spacing-search">
+       <%= text_field_tag :search, params[:search] %>
+    </div>
+    <div class="form-group" class="spacing-search">
+      <%= submit_tag "Search", :name => nil, class:"btn spacing-search"  %>
+    </div>
+    <%= link_to new_retailer_path do %>
+      <button type="button" name="New" class="btn action spacing-search">New</button>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<%= simple_form_for @retailer do |r| %>
+  <%= r.input :code %>
+  <%= r.input :label %>
+  <%= r.association :country, collection: @selectable_countries.order(:label),:label_method => lambda { |country| "#{country.code} - #{country.label}"},input_html: { class: 'countries-select' } %>
+  <%= r.input :active %>
+  <%= r.input :description, as: :text %>
+  <%= r.input :photo, as: :attachinary %>
+  <%= r.button :submit, "Validate", class: "btn validate" %>
+<% end %>
