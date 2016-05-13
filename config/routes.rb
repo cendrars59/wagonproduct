@@ -21,9 +21,6 @@ Rails.application.routes.draw do
   # Routes related to users management
   resources :categories
 
-  # Routes related to the telex mangement
-  resources :posts
-
   # Routes related to the countries mangement
   resources :countries
 
@@ -31,7 +28,13 @@ Rails.application.routes.draw do
   resources :groups
 
   # Routes related to the countries mangement
+  resources :markets
+
+  # Routes related to the countries mangement
   resources :profils
+
+  # Routes related to the telex mangement
+  resources :posts
 
   # Routes related to the retailers mangement
   resources :retailers

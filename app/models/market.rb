@@ -1,5 +1,4 @@
-class Category < ApplicationRecord
-
+class Market < ApplicationRecord
   #############################################################################
   # Data  model relationships
   #############################################################################
@@ -7,9 +6,7 @@ class Category < ApplicationRecord
   # Allowing the attachement of a photo to a category
   has_attachment :photo
 
-  belongs_to :country
-  has_many :users
-  has_many :markets
+  belongs_to :category
 
   #############################################################################
   # Controls on set data`
@@ -22,7 +19,7 @@ class Category < ApplicationRecord
             presence:true,
             length: {maximum: 50}
 
-  validates :country_id,
+  validates :category_id,
             presence:true
 
   #############################################################################
@@ -33,14 +30,5 @@ class Category < ApplicationRecord
   scope :active, -> {
     where(:active => true)
   }
-
-  scope :master, -> {
-    where("active = ? and master = ?", true,true )
-  }
-
-  scope :notMasterAndActive, -> {
-    where("active = ? and master = ?", true,false)
-  }
-
 
 end
