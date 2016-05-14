@@ -7,6 +7,9 @@ class Category < ApplicationRecord
   # Allowing the attachement of a photo to a category
   has_attachment :photo
 
+  belongs_to :category
+  has_many :categories
+
   belongs_to :country
   has_many :users
   has_many :markets
@@ -25,6 +28,9 @@ class Category < ApplicationRecord
   validates :country_id,
             presence:true
 
+  validates :category_id,
+            presence:true
+
   #############################################################################
   # Scope on set data`
   #############################################################################
@@ -39,8 +45,7 @@ class Category < ApplicationRecord
   }
 
   scope :notMasterAndActive, -> {
-    where("active = ? and master = ?", true,false)
+    where("active = ? and master = ?", true, nil|false)
   }
-
 
 end

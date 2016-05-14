@@ -42,7 +42,7 @@ class Country < ApplicationRecord
   }
 
   scope :notMasterAndActive, -> {
-    where("active = ? and master = ?", true,false)
+    where("active = ? and master = ?", true, false)
   }
 
 

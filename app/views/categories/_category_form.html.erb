@@ -1,9 +1,10 @@
 <%= simple_form_for @category do |c| %>
-  <%= c.input :code %>
-  <%= c.input :label %>
-  <%= c.association :country, collection: @selectable_countries.order(:label),:label_method => lambda { |country| "#{country.code} - #{country.label}"},input_html: { class: 'countries-select' } %>
-  <%= c.input :is_active %>
-  <%= c.input :description, as: :text %>
-  <%= c.input :photo, as: :attachinary %>
-  <%= c.button :submit, "Validate", class: "btn validate" %>
+  <%= c.input :code, input_html: {:maxlength => 6 }%>
+    <%= c.input :label, input_html: { maxlength: 40 } %>
+    <%= c.input :active %>
+  	<%= c.association :country, collection: @selectable_countries.order(:label),:label_method => lambda { |country| "#{country.code} - #{country.label}"},input_html: { class: 'countries-select' } %>
+  	<%= c.association :category, label:'Master',collection:@masters,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: false,input_html: { class: 'countries-select' } %>
+  	<%= c.input :description, as: :text ,input_html: { maxlength: 255 } %>
+  	<%= c.input :photo, as: :attachinary %>
+  	<%= c.button :submit, "Validate", class: "btn validate" %>
 <% end %>

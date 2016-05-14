@@ -31,13 +31,6 @@ class Retailer < ApplicationRecord
   scope :active, -> {
     where(:active => true)
   }
-
-  scope :master, -> {
-    where("active = ? and master = ?", true,true )
-  }
-
-  scope :notMasterAndActive, -> {
-    where("active = ? and master = ?", true,false)
-  }
+ 
 
 end

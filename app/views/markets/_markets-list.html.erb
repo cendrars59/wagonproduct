@@ -1,0 +1,29 @@
+<% if @markets.length != 0 %>
+  <% @markets.each do |market|  %>
+    <div class="product">
+      <div class='product-body'>
+        <h3> <%= market.code %> <%= market.label %> </h3>
+        <div>Active: 
+          <% if market.active == true%>
+              <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+      <ul class="list-inline product-controls hidden-sm hidden-xs">
+        <li>
+          <%= link_to edit_market_path(market) do %>
+            <i class="fa fa-pencil"> </i>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to market_path(market), method: :delete do %>
+             <i class="fa fa-trash"> </i>
+           <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <!--Message is displayed if the list is empty -->
+  <span class="empty-list-message message-centered">Markets list is empty. No market available</span>
+<% end %>

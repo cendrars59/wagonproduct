@@ -1,9 +1,10 @@
 class CategoriesController < ApplicationController
 
-  before_action :find_category, only: [:show, :edit, :update, :destroy]
+  before_action :find_category, only: [:show,:edit, :update, :destroy]
+  before_action :find_masters, only: [:show,:new,:create,:edit]
 
-  # Gathering active countries to attach to category to create or update
-  before_action :gather_country, only: [:new, :edit]
+  # Gathering active countries and not master to attach to category to create or update
+  before_action :find_active_countries_not_master, only: [:new, :edit]
 
   def index
     @categories = Category.all
@@ -46,15 +47,19 @@ class CategoriesController < ApplicationController
 
   # Avoid paramters hacking
   def category_params
-    params.require(:category).permit(:code, :label, :is_active, :description ,:country_id,:photo)
+    params.require(:category).permit(:code,:label, :active,:description,:country_id,:category_id,:master,:photo)
   end
 
   def find_category
     @category = Category.find(params[:id])
   end
 
-  def gather_country
-    @selectable_countries = Country.active
+  def find_active_countries_not_master
+    @selectable_countries = Country.notMasterAndActive
   end
+
+  def find_masters
+    @masters = Category.master
+  end 
 
 end

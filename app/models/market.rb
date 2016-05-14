@@ -7,7 +7,6 @@ class Market < ApplicationRecord
   has_attachment :photo
 
   belongs_to :category
-
   #############################################################################
   # Controls on set data`
   #############################################################################
@@ -26,7 +25,7 @@ class Market < ApplicationRecord
   # Scope on set data`
   #############################################################################
 
-  # Scope on the active categories
+  # Scope on the active markets
   scope :active, -> {
     where(:active => true)
   }
