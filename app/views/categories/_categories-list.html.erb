@@ -1,34 +1,35 @@
-<% if @countries.length != 0 %>
-  <% @countries.each do |country|  %>
+<% if @categories.length != 0 %>
+  <% @categories.each do |category|  %>
     <div class="product">
-      <% if country.photo? %>
+      <% if category.photo? %>
         <!-- Decalre the link to retrieve the photo -->
-        <%= cl_image_tag(country.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image') %>
+        <%= cl_image_tag(category.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image') %>
       <% else %>
-        <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs" data-toggle="tooltip" data-placement="left" title="country.description">
+        <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs" data-toggle="tooltip" data-placement="left" title="category.description">
       <% end %>
       <div class='product-body'>
-        <h3> <%= country.code %> <%= country.label %> </h3>
+        <h3> <%= category.code %> <%= category.label %> </h3>
         <div>Active: <%=  %>
-          <% if country.active == true%>
+          <% if category.active == true%>
               <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
+          <% end %>
+          <% if category.master == true%>
+              Is master: <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
           <% end %>
         </div>
         <div>
-          <% if country.master == true%>
-              Is master: <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
-          <% end %>
+          <%= category.country.label %>
         </div>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
         <li>
-          <%= link_to edit_country_path(country) do %>
+          <%= link_to edit_category_path(category) do %>
             <i class="fa fa-pencil"> </i>
           <% end %>
         </li>
         <li>
-          <% if country.master == false %>
-            <%= link_to country_path(country), method: :delete do %>
+          <% if category.master == false %>
+            <%= link_to category_path(category), method: :delete do %>
               <i class="fa fa-trash"> </i>
             <% end %>
           <% end %>

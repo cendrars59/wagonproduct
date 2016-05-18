@@ -8,6 +8,9 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @categories = @categories.active if params[:active]
+    @categories = @categories.master if params[:master]
+    @categories = @categories.search(params[:search]) if params[:search]
   end
 
   def show

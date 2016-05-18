@@ -1,15 +1,27 @@
 <%= simple_form_for @country do |c| %>
-  <%= c.input :code, input_html: {:maxlength => 6 }%>
+  
   <% if (@country.master == false) %>
+    <%= c.input :code, input_html: {:maxlength => 6 }%>
     <%= c.input :label, input_html: { maxlength: 40 } %>
     <%= c.input :active %>
     <%= c.association :country, label:'Master',collection: @master,:readonly => true, :label_method => lambda { |country| "#{country.code} - #{country.label}" },include_blank: false,input_html: { class: 'countries-select' } %>
   <% else %>
+    <%= c.input :code, input_html: { maxlength: 40 },:readonly => true%>
     <%= c.input :label, input_html: { maxlength: 40 },:readonly => true%>
     <%= c.input :active, :disabled => true  %>
     <%= c.input :master, label: "Is master", :disabled => true%>
   <% end %>
   <%= c.input :description, as: :text ,input_html: { maxlength: 255 } %>
-  <%= c.input :photo, as: :attachinary %>
-  <%= c.button :submit, "Validate", class: "btn validate" %>
+  <% if @country.photo %>
+    <%= cl_image_tag(@country.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image') %>
+  <%else %>
+    <%= c.input :photo, as: :attachinary %>
+  <% end %>
+  <div class="buttons-down-form">
+    <%= c.button :submit, "Validate", class: "btn validate" %> 
+    <button class="btn">
+      <%= link_to "Back", countries_path, class: " navbar-wagon-item navbar-wagon-link" %>
+    </button>
+  </div>
+  
 <% end %>

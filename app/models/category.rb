@@ -25,12 +25,7 @@ class Category < ApplicationRecord
             presence:true,
             length: {maximum: 50}
 
-  validates :country_id,
-            presence:true
-
-  validates :category_id,
-            presence:true
-
+  
   #############################################################################
   # Scope on set data`
   #############################################################################

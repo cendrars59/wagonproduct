@@ -1,50 +1,18 @@
 <div class="work-area">
   <h2>Categories</h2>
+  <!--Search area -->
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-        <div class="search-area">
-
-        </div>
-        <% @categories.each do |category|  %>
-          <div class="product">
-            <% if category.photo? %>
-              <!-- Decalre the link to retrieve the photo -->
-              <%= cl_image_tag(category.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image' ) %>
-            <% else %>
-              <img src="http://unsplash.it/300/200" alt="substitute" class="product-image hidden-xs">
-            <% end %>
-            <div class='product-body'>
-              <h3> <%= category.code %> <%= category.label %> </h3>
-              <div>Country: <%= category.country.label %></div>
-              <div>Active: <%=  %>
-                <% if category.active == true%>
-                    <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
-                <% else %>
-
-                <% end %>
-              </div>
-            </div>
-            <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li>
-                <%= link_to edit_category_path(category) do %>
-                  <i class="fa fa-pencil "> </i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to category_path(category), method: :delete do %>
-                  <i class="fa fa-trash"> </i>
-                <% end %>
-              </li>
-            </ul>
-          </div> <!-- div product -->
-        <% end %>
-        <div class="button-area">
-          <%= link_to new_category_path do %>
-            <button type="button" name="New" class="btn action">New</button>
-          <% end %>
-        </div><!-- div button -->
-      </div> <!--  End col-xs-12 col-sm-10 col-sm-offset-1 -->
-    </div> <!--  Row -->
-  </div> <!--  End container -->
-</div> <!--  End work Area -->
+        <%= render "categories-search" %>
+      </div>
+    </div>
+  </div>
+  <!-- results list -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <%= render "categories-list" %>
+    </div>
+  </div>
+</div>

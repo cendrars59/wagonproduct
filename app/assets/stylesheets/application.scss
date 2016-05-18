@@ -11,8 +11,10 @@
 
 
 // Your CSS
-@import "layout/index";
+@import "areas/index";
 @import "components/index";
+@import "layout/index";
 @import "pages/index";
+@import "text/index";
 @import "vendor/index";
-@import "areas/index"
+

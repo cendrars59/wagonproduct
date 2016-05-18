@@ -1,9 +1,8 @@
 <div class="search-width">
-  <%= form_tag countries_path, class: "form-inline" , method: "get" do %>
+  <%= form_tag categories_path, class: "form-inline" , method: "get" do %>
     <%= render "components/search-bar-1" %>
-    <%= link_to new_country_path do %>
+    <%= link_to new_category_path do %>
       <button type="button" name="New" class="btn action spacing-search">New</button>
     <% end %>
   <% end %>
 </div>
-

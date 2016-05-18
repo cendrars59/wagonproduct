@@ -29,21 +29,41 @@ class Country < ApplicationRecord
   validates_associated :countries
 
   #############################################################################
+  # Data mangement `
+  #
+  #############################################################################
+
+  before_create :set_code
+
+
+
+  #############################################################################
   # Scope on set data`
   #############################################################################
 
   # Scope on the active countries
   scope :active, -> {
-    where(:active => true)
+    where("active = ?", true)
   }
 
   scope :master, -> {
-    where("active = ? and master = ?", true,true )
+    where("master = ?",true)
   }
+
+  scope :search, -> (query){
+    where("code like :query or label like :query", query: "%#{query}%")
+  }
+
 
   scope :notMasterAndActive, -> {
     where("active = ? and master = ?", true, false)
   }
+
+  private
+
+  def set_code
+    self.code = self.label.strip.upcase[0..2]
+  end
 
 
 end

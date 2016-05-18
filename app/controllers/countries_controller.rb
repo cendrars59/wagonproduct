@@ -3,9 +3,13 @@ class CountriesController < ApplicationController
   # Retrieveing country according the ID
   before_action :find_country, only: [:show, :edit, :update, :destroy]
   before_action :find_master, only:[:show,:new,:create,:edit]
+  before_action :get_countries, only:[:index]
 
   def index
     @countries = Country.all
+    @countries = @countries.active if params[:active]
+    @countries = @countries.master if params[:master]
+    @countries = @countries.search(params[:search]) if params[:search]
   end
 
   def show
@@ -45,7 +49,7 @@ class CountriesController < ApplicationController
 
   # Avoid paramters hacking
   def country_params
-    params.require(:country).permit(:code, :label, :active, :description,:photo)
+    params.require(:country).permit(:code, :label, :active,:master,:description,:photo)
   end
 
   def find_country
@@ -59,6 +63,10 @@ class CountriesController < ApplicationController
   def find_master
     @master = Country.master
   end
+
+  def get_countries 
+    @selectable_countries = Country.all
+  end 
 
 
 
