@@ -7,6 +7,8 @@ class RetailersController < ApplicationController
 
   def index
     @retailers = Retailer.all
+    @retailers = @retailers.active if params[:active]
+    @retailers = @retailers.search(params[:search]) if params[:search]
   end
 
   def show

@@ -1,0 +1,32 @@
+<% if @nationals.length != 0 %>
+  <% @nationals.each do |national|  %>
+    <div class="product">
+      <div class='product-body'>
+        <h3> <%= national.code %> <%= national.label %> </h3>
+        <div>Active:
+          <% if national.active == true%>
+              <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
+          <% end %>
+        </div>
+        <div>
+            Retailer: <%= national.retailer.label %>
+        </div>
+      </div>
+      <ul class="list-inline product-controls hidden-sm hidden-xs">
+        <li>
+          <%= link_to edit_national_path(national) do %>
+            <i class="fa fa-pencil"> </i>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to category_path(category), method: :delete do %>
+            <i class="fa fa-trash"> </i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <!--Message is displayed if the list is empty -->
+  <%= render "components/no-result-found" %>
+<% end %>

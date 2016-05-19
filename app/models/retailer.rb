@@ -31,6 +31,10 @@ class Retailer < ApplicationRecord
   scope :active, -> {
     where(:active => true)
   }
+
+  scope :search, -> (query){
+    where("code like :query or label like :query", query: "%#{query}%")
+  }
  
 
 end

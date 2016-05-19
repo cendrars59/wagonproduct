@@ -24,17 +24,23 @@ Rails.application.routes.draw do
   # Routes related to the countries mangement
   resources :countries
 
-  # Routes related to the countries mangement
+  # Routes related to the groups mangement
   resources :groups
 
-  # Routes related to the countries mangement
+  # Routes related to the markets mangement
   resources :markets
 
-  # Routes related to the countries mangement
+  # Routes related to the nationals mangement
+  resources :nationals
+
+  # Routes related to the profils mangement
   resources :profils
 
-  # Routes related to the telex mangement
+  # Routes related to the post mangement
   resources :posts
+
+  # Routes related to the regionals mangement
+  resources :regionals
 
   # Routes related to the retailers mangement
   resources :retailers

@@ -1,15 +1,15 @@
-class Market < ApplicationRecord
+class National < ApplicationRecord
   #############################################################################
   # Data  model relationships
   #############################################################################
+  
+  belongs_to :retailer
+  has_many :regionals
 
-  # Allowing the attachement of a photo to a category
-  has_attachment :photo
-
-  belongs_to :category
   #############################################################################
   # Controls on set data`
   #############################################################################
+  
   validates :code,
             presence:true,
             uniqueness: true
@@ -18,14 +18,12 @@ class Market < ApplicationRecord
             presence:true,
             length: {maximum: 50}
 
-  validates :category_id,
-            presence:true
-
+  
   #############################################################################
   # Scope on set data`
   #############################################################################
 
-  # Scope on the active markets
+  # Scope on the active nationals
   scope :active, -> {
     where(:active => true)
   }
@@ -33,5 +31,5 @@ class Market < ApplicationRecord
   scope :search, -> (query){
     where("code like :query or label like :query", query: "%#{query}%")
   }
-
+  
 end
