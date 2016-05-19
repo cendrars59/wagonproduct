@@ -68,6 +68,8 @@ class CountriesController < ApplicationController
     @selectable_countries = Country.all
   end 
 
+  
+
 
 
 

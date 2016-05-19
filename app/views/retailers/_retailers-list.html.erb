@@ -9,10 +9,13 @@
       <% end %>
       <div class='product-body'>
         <h3> <%= retailer.code %> <%= retailer.label %> </h3>
-        <div>Active: <%=  %>
+        <div>Active: 
           <% if retailer.active == true%>
               <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
           <% end %>
+        </div>
+        <div>
+          Country: <%= retailer.country.label%>
         </div>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">

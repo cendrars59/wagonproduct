@@ -9,7 +9,7 @@
       <% end %>
       <div class='product-body'>
         <h3> <%= category.code %> <%= category.label %> </h3>
-        <div>Active: <%=  %>
+        <div>Active:
           <% if category.active == true%>
               <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
           <% end %>
@@ -18,7 +18,11 @@
           <% end %>
         </div>
         <div>
-          <%= category.country.label %>
+          <% if category.master == true%>
+            Country: <%= category.country.label %>
+          <% else %>
+            Country: <%= category.category.country.label %>
+          <% end %>
         </div>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
@@ -28,7 +32,7 @@
           <% end %>
         </li>
         <li>
-          <% if category.master == false %>
+          <% if category.master == false or category.master == nil  %>
             <%= link_to category_path(category), method: :delete do %>
               <i class="fa fa-trash"> </i>
             <% end %>

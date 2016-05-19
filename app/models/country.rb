@@ -54,10 +54,11 @@ class Country < ApplicationRecord
     where("code like :query or label like :query", query: "%#{query}%")
   }
 
-
   scope :notMasterAndActive, -> {
     where("active = ? and master = ?", true, false)
   }
+
+  
 
   private
 

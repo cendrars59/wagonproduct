@@ -1,12 +1,15 @@
 <%= simple_form_for @category do |c| %>
-	<% if @category.master == true%>
+	<% if @category.master == false or @category.master == nil %>
   		<%= c.input :code, input_html: {:maxlength => 6 }%>
   		<%= c.input :label, input_html: { maxlength: 40 } %>
   		<%= c.input :active %>
   		<%= c.input :master %>
   		<%= c.association :category, label:'Master',collection:@masters,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: false,input_html: { class: 'countries-select' } %>
   	<% else %>
-
+      <%= c.input :code, input_html: {:maxlength => 6 },:readonly => true%>
+      <%= c.input :label, input_html: { maxlength: 40 },:readonly => true %>
+      <%= c.input :active, :disabled => true%>
+      <%= c.input :master,:disabled => false %>
   	<% end %>
   <%= c.input :description, as: :text ,input_html: { maxlength: 255 } %>
   <% if @category.photo %>
