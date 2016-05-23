@@ -1,12 +1,10 @@
 <%= simple_form_for @country do |c| %>
-  
+  <%= c.input :code, input_html: { maxlength: 3 },:readonly => true%>
   <% if (@country.master == false) %>
-    <%= c.input :code, input_html: {:maxlength => 6 }%>
     <%= c.input :label, input_html: { maxlength: 40 } %>
     <%= c.input :active %>
     <%= c.association :country, label:'Master',collection: @master,:readonly => true, :label_method => lambda { |country| "#{country.code} - #{country.label}" },include_blank: false,input_html: { class: 'countries-select' } %>
   <% else %>
-    <%= c.input :code, input_html: { maxlength: 40 },:readonly => true%>
     <%= c.input :label, input_html: { maxlength: 40 },:readonly => true%>
     <%= c.input :active, :disabled => true  %>
     <%= c.input :master, label: "Is master", :disabled => true%>

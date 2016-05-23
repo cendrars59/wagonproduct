@@ -7,10 +7,10 @@ class CategoriesController < ApplicationController
   before_action :find_active_countries_not_master, only: [:new, :edit]
 
   def index
-    @categories = Category.all
-    @categories = @categories.active if params[:active]
-    @categories = @categories.master if params[:master]
-    @categories = @categories.search(params[:search]) if params[:search]
+    @categories = Category.all.ordered
+    @categories = @categories.active.ordered if params[:active]
+    @categories = @categories.master.ordered if params[:master]
+    @categories = @categories.search(params[:search]).ordered if params[:search]
   end
 
   def show
@@ -50,7 +50,7 @@ class CategoriesController < ApplicationController
 
   # Avoid paramters hacking
   def category_params
-    params.require(:category).permit(:code,:label, :active,:description,:country_id,:category_id,:master,:photo)
+    params.require(:category).permit(:code,:label,:active,:description,:country_id,:category_id,:master,:photo)
   end
 
   def find_category

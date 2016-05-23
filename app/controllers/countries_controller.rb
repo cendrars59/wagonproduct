@@ -49,7 +49,7 @@ class CountriesController < ApplicationController
 
   # Avoid paramters hacking
   def country_params
-    params.require(:country).permit(:code, :label, :active,:master,:description,:photo)
+    params.require(:country).permit(:code,:label,:active,:description,:photo,:country_id,:master)
   end
 
   def find_country

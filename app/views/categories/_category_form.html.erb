@@ -1,16 +1,16 @@
 <%= simple_form_for @category do |c| %>
-	<% if @category.master == false or @category.master == nil %>
-  		<%= c.input :code, input_html: {:maxlength => 6 }%>
-  		<%= c.input :label, input_html: { maxlength: 40 } %>
-  		<%= c.input :active %>
-  		<%= c.input :master %>
-  		<%= c.association :category, label:'Master',collection:@masters,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: false,input_html: { class: 'countries-select' } %>
-  	<% else %>
-      <%= c.input :code, input_html: {:maxlength => 6 },:readonly => true%>
-      <%= c.input :label, input_html: { maxlength: 40 },:readonly => true %>
-      <%= c.input :active, :disabled => true%>
-      <%= c.input :master,:disabled => false %>
-  	<% end %>
+  <%= c.input :code, input_html: {:maxlength => 10 },:readonly => true%>
+  <%= c.input :label, input_html: { maxlength: 50 } %>
+  <%= c.input :active, :disabled => false%>
+  <div id="master-category">
+    <div class="country-for-master-category">
+      <%= c.input :master,:disabled => false, input_html: {id:"master-category-check", class:'country-for-master-category' }%>
+    </div>
+    <div class="country-for-master-category">
+      <%= c.association :country,label: false,collection:@selectable_countries,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: true,input_html: { id:"category-country-list",class: 'countries-select country-for-master-category' } %>
+    </div> 
+  </div>
+  <%= c.association :category,label:'Master',collection:@masters,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: true,input_html: { id: "country-select-for-master",class: 'masters-select' } %>
   <%= c.input :description, as: :text ,input_html: { maxlength: 255 } %>
   <% if @category.photo %>
     <%= cl_image_tag(@category.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image') %>
