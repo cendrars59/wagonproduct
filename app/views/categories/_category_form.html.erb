@@ -1,16 +1,15 @@
 <%= simple_form_for @category do |c| %>
-  <%= c.input :code, input_html: {:maxlength => 10 },:readonly => true%>
-  <%= c.input :label, input_html: { maxlength: 50 } %>
-  <%= c.input :active, :disabled => false%>
-  <div id="master-category">
-    <div class="country-for-master-category">
-      <%= c.input :master,:disabled => false, input_html: {id:"master-category-check", class:'country-for-master-category' }%>
-    </div>
-    <div class="country-for-master-category">
-      <%= c.association :country,label: false,collection:@selectable_countries,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: true,input_html: { id:"category-country-list",class: 'countries-select country-for-master-category' } %>
-    </div> 
-  </div>
-  <%= c.association :category,label:'Master',collection:@masters,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: true,input_html: { id: "country-select-for-master",class: 'masters-select' } %>
+  <% if @category.master == true %>
+    <%= c.input :code, input_html: {:maxlength => 10 },:readonly => true%>
+    <%= c.input :label, input_html: { maxlength: 50 },:readonly => true %>
+    <%= c.input :active, :disabled => true%>
+    <%= c.input :master, :disabled => true%>
+  <% else %>
+    <%= c.input :code, input_html: {:maxlength => 10 },:readonly => true%>
+    <%= c.input :label, input_html: { maxlength: 50 } %>
+    <%= c.input :active, :disabled => false%>
+    <%= c.association :category,label:'Master',collection:@masters,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: true,input_html: { id: "country-select-for-master",class: 'items-select' } %>
+  <% end %>  
   <%= c.input :description, as: :text ,input_html: { maxlength: 255 } %>
   <% if @category.photo %>
     <%= cl_image_tag(@category.photo.path, height: 117, width: 175, crop: :fill, class: 'product-image') %>

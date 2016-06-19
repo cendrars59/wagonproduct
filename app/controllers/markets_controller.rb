@@ -1,5 +1,5 @@
 class MarketsController < ApplicationController
-	before_action :find_market, only: [:show, :edit, :update, :destroy]
+	before_action :find_market, only: [:show,:edit,:update,:destroy]
 
   # Gathering active countries and not master to attach to market to create or update
   before_action :find_active_categories_not_master, only: [:new,:create,:update,:edit]

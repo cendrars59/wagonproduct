@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-  before_action :find_category, only: [:show,:edit, :update, :destroy]
+  before_action :find_category, only: [:show,:edit,:update, :destroy]
   before_action :find_masters, only: [:show,:new,:create,:edit]
 
   # Gathering active countries and not master to attach to category to create or update
@@ -64,5 +64,7 @@ class CategoriesController < ApplicationController
   def find_masters
     @masters = Category.master
   end 
+
+  
 
 end

@@ -3,7 +3,7 @@
   <% if (@country.master == false) %>
     <%= c.input :label, input_html: { maxlength: 40 } %>
     <%= c.input :active %>
-    <%= c.association :country, label:'Master',collection: @master,:readonly => true, :label_method => lambda { |country| "#{country.code} - #{country.label}" },include_blank: false,input_html: { class: 'countries-select' } %>
+    <%= c.association :country, label:'Master',collection: @master,:readonly => true, :label_method => lambda { |country| "#{country.code} - #{country.label}" },include_blank: false,input_html: { class: 'items-select' } %>
   <% else %>
     <%= c.input :label, input_html: { maxlength: 40 },:readonly => true%>
     <%= c.input :active, :disabled => true  %>

@@ -1,8 +1,8 @@
 <%= simple_form_for @market do |m| %>
-  <%= m.input :code, input_html: {:maxlength => 6 }%>
+  <%= m.input :code, input_html: {:maxlength => 20 },:readonly => true%>
   <%= m.input :label, input_html: { maxlength: 40 } %>
   <%= m.input :active %>
-  <%= m.association :category, label:'Category',collection: @selectable_categories, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: true,input_html: { class: 'masters-category-select' } %>
+  <%= m.association :category,label:'Category',collection:@selectable_categories,:readonly => false, :label_method => lambda { |category| "#{category.code} - #{category.label}" },include_blank: true,input_html: {class: 'items-select' } %>
   <%= m.input :description, as: :text ,input_html: { maxlength: 255 } %>
   <%= m.input :photo, as: :attachinary %>
   <div class="buttons-down-form">

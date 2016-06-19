@@ -28,6 +28,9 @@ class Category < ApplicationRecord
   # according the label set.
   before_validation :set_code
 
+  # Rq-category-004 : 
+  before_validation :set_master_at_false_if_nil
+
 
   #############################################################################
   # Controls on set data`
@@ -67,7 +70,7 @@ class Category < ApplicationRecord
   }
 
   scope :notMasterAndActive, -> {
-    where("active = ? and master = ?", true, nil|false)
+    where("active = ? and master = ?",true,false)
   }
 
   scope :search, -> (query){
@@ -102,6 +105,12 @@ class Category < ApplicationRecord
   def country_mandatory_if_master_category?
       self.master == true
   end
+
+  def set_master_at_false_if_nil
+    if self.master == nil 
+      self.master == false
+    end 
+  end 
 
 
 end
