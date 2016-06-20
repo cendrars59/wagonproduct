@@ -1,0 +1,13 @@
+<%= simple_form_for @national do |n| %>
+  <%= n.input :code, input_html: {:maxlength => 10 },:readonly => true%>
+  <%= n.input :label, input_html: { maxlength: 50 } %>
+  <%= n.input :active, :disabled => false%>
+  <%= n.association :retailer,label:'Retailer',collection:@selectable_retailers,:readonly => false, :label_method => lambda { |retailer| "#{retailer.code} - #{retailer.label}" },include_blank: true,input_html: { id: "country-select-for-master",class: 'items-select' } %>
+  <%= n.input :description, as: :text ,input_html: { maxlength: 255 } %>
+  <div class="buttons-down-form">
+    <%= n.button :submit, "Validate", class: "btn validate" %> 
+    <button class="btn">
+      <%= link_to "Back", nationals_path, class: " navbar-wagon-item navbar-wagon-link" %>
+    </button>
+  </div>
+<% end %>

@@ -1,25 +1,26 @@
-<% if @nationals.length != 0 %>
-  <% @nationals.each do |national|  %>
+<% if @regionals.length != 0 %>
+  <% @regionals.each do |regional|  %>
     <div class="product">
       <div class='product-body'>
-        <h3> <%= national.code %> <%= national.label %> </h3>
+        <h3> <%= regional.code %> <%= regional.label %> </h3>
         <div>Active:
-          <% if national.active == true%>
+          <% if regional.active == true%>
               <i class="fa fa-check-square-o checked" aria-hidden="true"></i>
           <% end %>
         </div>
         <div>
-            Retailer: <%= national.retailer.label %>
+            National central: <%= regional.national.label %>
+            Retailer : <%= regional.national.retailer.label %>
         </div>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
         <li>
-          <%= link_to edit_national_path(national) do %>
+          <%= link_to edit_regional_path(regional) do %>
             <i class="fa fa-pencil"> </i>
           <% end %>
         </li>
         <li>
-          <%= link_to national_path(national), method: :delete do %>
+          <%= link_to regional_path(regional), method: :delete do %>
             <i class="fa fa-trash"> </i>
           <% end %>
         </li>

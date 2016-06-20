@@ -14,7 +14,7 @@ class Market < ApplicationRecord
   #############################################################################
   
 
-  # Rq-category-003 : Before creating or updating market Info set label in the 
+  # Rq-market-003 : Before creating or updating market Info set label in the 
   # right format : not space before / first letter capitalize
   before_validation :format_label
 

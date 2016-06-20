@@ -1,0 +1,13 @@
+<%= simple_form_for @regional do |r| %>
+  <%= r.input :code, input_html: {:maxlength => 10 },:readonly => true%>
+  <%= r.input :label, input_html: { maxlength: 50 } %>
+  <%= r.input :active, :disabled => false%>
+  <%= r.association :national,label:'National Central',collection:@selectable_nationals,:readonly => false, :label_method => lambda { |national| "#{national.code} - #{national.label}" },include_blank: true,input_html: { class: 'items-select' } %>
+  <%= r.input :description, as: :text ,input_html: { maxlength: 255 } %>
+  <div class="buttons-down-form">
+    <%= r.button :submit, "Validate", class: "btn validate" %> 
+    <button class="btn">
+      <%= link_to "Back", regionals_path, class: " navbar-wagon-item navbar-wagon-link" %>
+    </button>
+  </div>
+<% end %>
